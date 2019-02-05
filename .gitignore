@@ -19,5 +19,4 @@
 *.ipr
 /out/
 
-/src/test/
 *.log
