@@ -1,17 +1,21 @@
 package com.xiaoming.springbootlearning;
 
+import com.xiaoming.springbootlearning.config.StorageProperties;
 import com.xiaoming.springbootlearning.domain.Quote;
+import com.xiaoming.springbootlearning.service.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 //@EnableScheduling
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class Application /*implements CommandLineRunner*/{
     public static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
@@ -66,5 +70,13 @@ public class Application /*implements CommandLineRunner*/{
     .forEach(customer -> LOGGER.info(customer.toString()));
     }*/
     // #END Accessing Relational Data using JDBC with Spring
+
+    @Bean
+    CommandLineRunner init(StorageService storageService) {
+        return (args) -> {
+            //storageService.deleteAll();
+            storageService.init();
+        };
+    }
 }
 
