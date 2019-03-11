@@ -1,4 +1,4 @@
-package com.xiaoming.springbootlearning.controller.account;
+package com.xiaoming.springbootlearning.controller.file;
 
 import com.xiaoming.springbootlearning.exception.StorageFileNotFoundException;
 import com.xiaoming.springbootlearning.service.StorageService;

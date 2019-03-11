@@ -3,7 +3,6 @@ package com.xiaoming.springbootlearning.components;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.Date;
  * Created on 2019/02/02 22:28.
  * Description :
  */
-@Component
+//@Component
 public class ScheduledTasks {
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduledTasks.class);
 
