@@ -1,6 +1,6 @@
 package com.xiaoming.springbootlearning.repository;
 
-import com.xiaoming.springbootlearning.domain.User;
+import com.xiaoming.springbootlearning.domain.XmsUser;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
@@ -11,11 +11,11 @@ import java.util.Optional;
  * Description :This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
  * CRUD refers Create, Read, Update, Delete
  */
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<XmsUser, Long> {
 
-    Optional<User> findByUsername(String username);
+    Optional<XmsUser> findByUsername(String username);
 
-    User findUserByUsernameAndPassword(String username, String password);
+    XmsUser findUserByUsernameAndPassword(String username, String password);
 
-    User findUserByIdAndAndPassword(Long id, String password);
+    XmsUser findUserByIdAndAndPassword(Long id, String password);
 }

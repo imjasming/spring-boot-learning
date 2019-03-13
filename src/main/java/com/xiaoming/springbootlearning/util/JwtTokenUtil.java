@@ -1,5 +1,6 @@
 package com.xiaoming.springbootlearning.util;
 
+import com.xiaoming.springbootlearning.bo.JwtUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -39,13 +40,6 @@ public class JwtTokenUtil {
     private Date generateExpirationDate(Date createdDate){
         return new Date(createdDate.getTime() + expiration * 1000);
     }
-
-/*    private String generateToken(Claims claims){
-        return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
-    }*/
 
     private String doGenerateToken(Map<String, Object> claims){
 
@@ -97,7 +91,7 @@ public class JwtTokenUtil {
     }
 
     public boolean validateToken(String token, UserDetails userDetails){
-        JwtUser user = (JwtUser) userDetails;
+        JwtUserDetails user = (JwtUserDetails) userDetails;
         final String username = getUsernameFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
         return (

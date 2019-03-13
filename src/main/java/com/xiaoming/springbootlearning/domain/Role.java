@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ import java.util.List;
  */
 @Data
 @Entity
-public class Role {
+public class Role implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String name;
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private List<XmsUser> users;
 }
