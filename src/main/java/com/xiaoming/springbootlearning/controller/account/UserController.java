@@ -1,6 +1,6 @@
 package com.xiaoming.springbootlearning.controller.account;
 
-import com.xiaoming.springbootlearning.domain.BaseUser;
+import com.xiaoming.springbootlearning.domain.User;
 import com.xiaoming.springbootlearning.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +23,8 @@ public class UserController {
 
     //@PostMapping(path = "/signup")
     @RequestMapping(path = "/signup", method = {RequestMethod.GET, RequestMethod.POST})
-    public BaseUser signUp(@RequestParam(value = "username") String name, @RequestParam(value = "password") String psw, @RequestParam(value = "email") String email) {
-        BaseUser u = new BaseUser();
+    public User signUp(@RequestParam(value = "username") String name, @RequestParam(value = "password") String psw, @RequestParam(value = "email") String email) {
+        User u = new User();
         u.setUsername(name);
         u.setPassword(psw);
         u.setEmail(email);
@@ -37,20 +37,20 @@ public class UserController {
 
     @PostMapping(path = "/signin")
     @RequestMapping(path = "/signin")
-    public ResponseEntity<BaseUser> signIn(@RequestParam(value = "username") String name, @RequestParam(value = "password") String psw) {
-        BaseUser result = userRepository.findUserByUsernameAndPassword(name, psw);
+    public ResponseEntity<User> signIn(@RequestParam(value = "username") String name, @RequestParam(value = "password") String psw) {
+        User result = userRepository.findUserByUsernameAndPassword(name, psw);
         HttpStatus status = result == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
 
         //System.out.println(name + " " + psw);
 
         LOGGER.info((result == null ? name : result.toString()) + "[sign in]");
 
-        return new ResponseEntity<BaseUser>(result, status);
+        return new ResponseEntity<User>(result, status);
     }
 
     @GetMapping(path = "/all")
     public @ResponseBody
-    Iterable<BaseUser> getAllUsers() {
+    Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }

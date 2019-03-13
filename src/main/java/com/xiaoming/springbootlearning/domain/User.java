@@ -1,9 +1,10 @@
 package com.xiaoming.springbootlearning.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class BaseUser {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,16 +15,19 @@ public class BaseUser {
     @Column(nullable = false, unique = true)
     private String email;
     private boolean active;
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "uid", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "rid", referencedColumnName = "id")})
+    private List<Role> roles;
 
-    public BaseUser() {
+    public User() {
     }
 
-    public BaseUser(Long id, String password) {
+    public User(Long id, String password) {
         this.id = id;
         this.password = password;
     }
 
-    public BaseUser(Long id, String username, String password, String email) {
+    public User(Long id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -78,7 +82,7 @@ public class BaseUser {
 
     @Override
     public String toString() {
-        return "BaseUser{" +
+        return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 '}';
