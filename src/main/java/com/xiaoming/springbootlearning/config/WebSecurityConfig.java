@@ -1,6 +1,6 @@
 package com.xiaoming.springbootlearning.config;
 
-import com.xiaoming.springbootlearning.service.JwtUserDetailsService;
+import com.xiaoming.springbootlearning.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private JwtUserDetailsServiceImpl jwtUserDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

@@ -3,8 +3,6 @@ package com.xiaoming.springbootlearning.repository;
 import com.xiaoming.springbootlearning.domain.XmsUser;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.Optional;
-
 /**
  * @author Xiaoming.
  * Created on 2018/11/22 11:30.
@@ -13,7 +11,7 @@ import java.util.Optional;
  */
 public interface UserRepository extends CrudRepository<XmsUser, Long> {
 
-    Optional<XmsUser> findByUsername(String username);
+    XmsUser findByUsername(String username);
 
     XmsUser findUserByUsernameAndPassword(String username, String password);
 
