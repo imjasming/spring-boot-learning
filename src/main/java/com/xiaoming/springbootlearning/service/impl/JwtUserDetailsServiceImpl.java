@@ -1,7 +1,7 @@
 package com.xiaoming.springbootlearning.service.impl;
 
 import com.xiaoming.springbootlearning.bo.JwtUserDetails;
-import com.xiaoming.springbootlearning.domain.XmsUser;
+import com.xiaoming.springbootlearning.domain.UmUser;
 import com.xiaoming.springbootlearning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +20,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        XmsUser user = userRepository.findByUsername(username);
+        UmUser user = userRepository.findByUsername(username);
         if (user == null){
             throw new UsernameNotFoundException("用户名或密码错误");
         }else{

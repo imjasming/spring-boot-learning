@@ -1,7 +1,7 @@
 package com.xiaoming.springbootlearning.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.xiaoming.springbootlearning.domain.XmsUser;
+import com.xiaoming.springbootlearning.domain.UmUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
  * Created on 2019/03/14 01:10.
  */
 public class JwtUserDetails implements UserDetails {
-    private final XmsUser user;
+    private final UmUser user;
 
-    public JwtUserDetails(XmsUser user) {
+    public JwtUserDetails(UmUser user) {
         this.user = user;
     }
 

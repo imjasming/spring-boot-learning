@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class XmsUser implements Serializable {
+public class UmUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -37,15 +37,15 @@ public class XmsUser implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "rid", referencedColumnName = "id")})
     private List<Role> roles;
 
-    public XmsUser() {
+    public UmUser() {
     }
 
-    public XmsUser(Long id, String password) {
+    public UmUser(Long id, String password) {
         this.id = id;
         this.password = password;
     }
 
-    public XmsUser(Long id, String username, String password, String email) {
+    public UmUser(Long id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -60,7 +60,7 @@ public class XmsUser implements Serializable {
 
     @Override
     public String toString() {
-        return "XmsUser{" +
+        return "UmUser{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 '}';
